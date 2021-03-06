@@ -36,4 +36,11 @@ class Snowball{
         }                  
         
     }
+
+    score(){
+        if(this.visiblity<0 && this.visiblity>-1000){
+            score++;
+        }
+      }
+      
 }

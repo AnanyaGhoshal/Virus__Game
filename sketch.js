@@ -17,6 +17,7 @@ function preload(){
 
 
 function setup() {
+
   createCanvas(600,650);
  
   engine = Engine.create();
@@ -44,7 +45,7 @@ function setup() {
   
   score = 0;
 
-  music.play();
+  music.play(); 
 
 }
 
@@ -52,34 +53,21 @@ function draw() {
 
   background(0);
   fill(255,255,0);
-  text("Let's destroy the viruses to serve our Planet...", 20,20);
+  text("Let's destroy the viruses to save the Planet...", 20,20);
   text("Don't hit the 'Sun'!!", 20,40);
   fill(255);
-  
+
   textSize(20); 
   fill(255);
   text("Score: "+score,15,70);
+  
 
-  if((ball1.body.speed)>10 ||
-      (ball2.body.speed)>10|| 
-      (ball4.body.speed)>10||
-      (ball5.body.speed)>10||
-      (ball6.body.speed)>10||
-      (ball9.body.speed)>10||
-      (ball10.body.speed)>10|| 
-      (ball11.body.speed)>10){
+if((ball3.body.speed)>10 || (ball7.body.speed)>10 || (ball8.body.speed)>10){
 
-      score = score+1;
-      gameState = "onsling";
+  gameState = "launched";
+  text("Press 'REFRESH' to play again..",150,380);
 
-  }
-
-  if((ball3.body.speed)>10 || (ball7.body.speed)>10 || (ball8.body.speed)>10){
-
-    gameState = "launched";
-    text("Press 'REFRESH' to play again..",150,380);
-
-  }
+}
 
   if(gameState==="launched"){
 
@@ -87,14 +75,14 @@ function draw() {
     fill(255,0,0);
     text("GAMEOVER!!!", 120,350);
 
-    ball1.body.speed=0;
-    ball2.body.speed=0;
-    ball4.body.speed=0;
-    ball5.body.speed=0;
-    ball6.body.speed=0;
-    ball9.body.speed=0;
-    ball10.body.speed=0;
-    ball11.body.speed=0;
+    ball1.body.visiblity = 255;
+    ball2.body.visiblity = 255;
+    ball4.body.visiblity = 255;
+    ball5.body.visiblity = 255;
+    ball6.body.visiblity = 255;
+    ball9.body.visiblity = 255;
+    ball10.bodyvisiblity = 255;
+    ball11.bodyvisiblity = 255;
     ball1.body.restitution=0;
     ball2.body.restitution=0;
     ball3.body.restitution=0;
@@ -106,6 +94,8 @@ function draw() {
     ball9.body.restitution=0;
     ball10.body.restitution=0;
     ball11.body.restitution=0;
+
+    sling.dettach(hit.body);
 
     music.stop();
     
@@ -152,6 +142,14 @@ function draw() {
   ground4.display();
   hit.display();
   sling.display();
+  ball1.score();
+  ball2.score();
+  ball4.score();
+  ball5.score();
+  ball6.score();
+  ball9.score();
+  ball10.score();
+  ball11.score();
   
 }
 
@@ -175,6 +173,7 @@ function keyPressed(){
 
     Matter.Body.setPosition(hit.body,{x:385,y:120});
     sling.attach(hit.body);
+    hit.trajectory = [];
   
   }
 

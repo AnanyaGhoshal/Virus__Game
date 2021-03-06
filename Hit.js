@@ -32,18 +32,5 @@ class Hit{
                image(this.smokeimage,this.trajectory[i][0],this.trajectory[i][1]);
             }
 
-            if(this.body.position.y>610){
-
-                push();
-
-                this.trajectory.length = 0;
-                this.visiblity = this.visiblity-5;
-                tint(255,this.visiblity);
-
-                pop();
-
-            }
-             
-
     }
 }

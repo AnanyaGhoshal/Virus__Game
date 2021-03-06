@@ -40,7 +40,6 @@ class Ball{
         }else{
 
             World.remove(world,this.body);
-            this.score = this.score+1;
             push();
             this.visiblity = this.visiblity - 5;
             tint(255,this.visiblity);
@@ -49,9 +48,14 @@ class Ball{
             
             
         }
-
-      
               
 
     }
+
+    score(){
+        if(this.visiblity<0 && this.visiblity>-1000){
+            score++;
+        }
+      }
+
 }
