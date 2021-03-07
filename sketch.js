@@ -81,8 +81,8 @@ if((ball3.body.speed)>10 || (ball7.body.speed)>10 || (ball8.body.speed)>10){
     ball5.body.visiblity = 255;
     ball6.body.visiblity = 255;
     ball9.body.visiblity = 255;
-    ball10.bodyvisiblity = 255;
-    ball11.bodyvisiblity = 255;
+    ball10.body.visiblity = 255;
+    ball11.body.visiblity = 255;
     ball1.body.restitution=0;
     ball2.body.restitution=0;
     ball3.body.restitution=0;
@@ -94,9 +94,7 @@ if((ball3.body.speed)>10 || (ball7.body.speed)>10 || (ball8.body.speed)>10){
     ball9.body.restitution=0;
     ball10.body.restitution=0;
     ball11.body.restitution=0;
-
-    sling.dettach(hit.body);
-
+    
     music.stop();
     
   }
@@ -118,9 +116,9 @@ if((ball3.body.speed)>10 || (ball7.body.speed)>10 || (ball8.body.speed)>10){
       ball9.body.speed=0;
       ball10.body.speed=0;
       ball11.body.speed=0;
-      ball3.body.restitution=0;
-      ball7.body.restitution=0;
-      ball8.body.restitution=0;
+     //ball3.body.restitution=0;
+     //ball7.body.restitution=0;
+     //ball8.body.restitution=0;
 
     }
   
@@ -169,11 +167,14 @@ function mouseReleased(){
 }
 function keyPressed(){
 
+  if(gameState!=="launched"){
+
   if(keyCode===32){
 
     Matter.Body.setPosition(hit.body,{x:385,y:120});
     sling.attach(hit.body);
     hit.trajectory = [];
+  }
   
   }
 
